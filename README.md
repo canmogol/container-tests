@@ -17,7 +17,7 @@ Here are the results of `ab` load testing against containerized native applicati
 | 100             | 240    | 262        | 336         | 363   | 462           |
 
 
-![Response Times](docs/percent-response-time.png)
+![Response Times](https://raw.githubusercontent.com/canmogol/container-tests/refs/heads/master/docs/percent-response-time.png)
 
 
 - Average Memory Usage in MegaBytes.
@@ -26,7 +26,7 @@ Here are the results of `ab` load testing against containerized native applicati
 | ---------- | ------ | --- | ---- | ------------- | ----- |
 | Memory(MB) | 11     | 15  | 15   | 12            | 5     |
 
-![Memory Usage](docs/memory-usage.png)
+![Memory Usage](https://raw.githubusercontent.com/canmogol/container-tests/refs/heads/master/docs/memory-usage.png)
 
 
 # Testing
