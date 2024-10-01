@@ -5,6 +5,10 @@ const app = new Hono()
 
 app.get('/', (c:Context) => {
   return c.text('Hello Hono Bun!')
+}).get('/external', async (c:Context) => {
+  const resp = await fetch(process.env.EXTERNAL_URL);
+  const data =  await resp.text()
+  return c.text(await data)
 })
 
 export default app
