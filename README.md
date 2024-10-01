@@ -1,32 +1,34 @@
+Please see the [README-gateway.md](README-gateway.md) for the gateway server tests.
+
 # Native Server Containerized Load Tests
 
 Here are the results of `ab` load testing against containerized native applications running with 0.2 CPU and 16MB memory.
 
 - Response percentage vs response time in milliseconds.
 
-| Percentage / ms | GO Srv | Bun (Hono) | Deno (Hono) | Nginx | Java Graal/VT |
-| --------------- | ------ | ---------- | ----------- | ----- | ------------- |
-| 50              | 21     | 14         | 58          | 12    | 94            |
-| 66              | 78     | 40         | 88          | 16    | 100           |
-| 75              | 83     | 55         | 99          | 62    | 104           |
-| 80              | 85     | 64         | 101         | 70    | 119           |
-| 90              | 92     | 83         | 141         | 78    | 193           |
-| 95              | 118    | 95         | 206         | 86    | 274           |
-| 98              | 206    | 122        | 263         | 189   | 301           |
-| 99              | 223    | 176        | 286         | 284   | 342           |
-| 100             | 240    | 262        | 336         | 363   | 462           |
+| Percentage / ms | GO Srv | Bun (Hono) | Deno (Hono) | Nginx |
+| --------------- | ------ | ---------- | ----------- | ----- |
+| 50              | 21     | 14         | 58          | 12    |
+| 66              | 78     | 40         | 88          | 16    |
+| 75              | 83     | 55         | 99          | 62    |
+| 80              | 85     | 64         | 101         | 70    |
+| 90              | 92     | 83         | 141         | 78    |
+| 95              | 118    | 95         | 206         | 86    |
+| 98              | 206    | 122        | 263         | 189   |
+| 99              | 223    | 176        | 286         | 284   |
+| 100             | 240    | 262        | 336         | 363   |
 
 
-![Response Times](https://raw.githubusercontent.com/canmogol/container-tests/refs/heads/master/docs/percent-response-time.png)
+![Response Times](docs/percent-response-time.png)
 
 
 - Average Memory Usage in MegaBytes.
 
-|            | GO Srv | Bun | Deno | Java Graal/VT | Nginx |
-| ---------- | ------ | --- | ---- | ------------- | ----- |
-| Memory(MB) | 11     | 15  | 15   | 12            | 5     |
+|            | GO Srv | Bun | Deno | Nginx |
+| ---------- | ------ | --- | ---- | ----- |
+| Memory(MB) | 11     | 15  | 15   | 5     |
 
-![Memory Usage](https://raw.githubusercontent.com/canmogol/container-tests/refs/heads/master/docs/memory-usage.png)
+![Memory Usage](docs/memory-usage.png)
 
 
 # Testing
