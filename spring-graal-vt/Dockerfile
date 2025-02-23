@@ -9,6 +9,6 @@ RUN ["/bin/bash", "-c", "cd / \
 && /apache-maven-3.9.9/bin/mvn -Pnative native:compile"]
 
 FROM ubuntu:22.10
-COPY --from=builder /spring-graal-vt/target/spring-graal-vt /spring-graal-vt
+COPY --from=builder /target/spring-graal-vt /spring-graal-vt
 EXPOSE 8080
 CMD ["/spring-graal-vt"]
