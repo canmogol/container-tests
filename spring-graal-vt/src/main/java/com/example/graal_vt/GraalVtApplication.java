@@ -39,9 +39,7 @@ class VirtualThreadController {
     public String external() {
         String externalUrl = System.getenv("EXTERNAL_URL");
         if (isNull(externalUrl)) {
-            String error = "EXTERNAL_URL environment variable is not set.";
-            log(error);
-            throw new RuntimeException(error);
+            externalUrl = "http://172.17.0.1:9090";
         }
         HttpRequest getRequest = HttpRequest.newBuilder().uri(URI.create(externalUrl)).GET().build();
         try {
