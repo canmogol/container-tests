@@ -16,6 +16,9 @@ func hello(w http.ResponseWriter, req *http.Request) {
 
 func external(w http.ResponseWriter, req *http.Request) {
     url := os.Getenv("EXTERNAL_URL")
+    if url == "" {
+        url = "http://172.17.0.1:9090"
+    }
     resp, err := c.Get(url)
     if err != nil {
         fmt.Printf("Error %s", err)
@@ -23,7 +26,11 @@ func external(w http.ResponseWriter, req *http.Request) {
     }
     defer resp.Body.Close()
     body, err := ioutil.ReadAll(resp.Body)
-	fmt.Fprintf(w, "%s", body)
+    if err != nil {
+        fmt.Printf("Error reading body: %s", err)
+        return
+    }
+    fmt.Fprintf(w, "%s", body)
 }
 
 func main() {
