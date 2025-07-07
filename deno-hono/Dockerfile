@@ -1,12 +1,14 @@
-FROM denoland/deno:latest
+import {Context, Hono} from 'hono'
 
-EXPOSE 8080
+const app = new Hono()
 
-WORKDIR /app
+app.get('/', (c: Context) => {
+    return c.text('Hello World')
+}).get('/external', async (c: Context) => {
+    const externalUrl = Deno.env.get("EXTERNAL_URL") || 'http://172.17.0.1:9090';
+    const resp = await fetch(externalUrl);
+    const data =  await resp.text()
+    return c.text(await data)
+})
 
-USER deno
-
-COPY . .
-RUN deno cache main.ts
-
-CMD ["run", "--allow-net", "main.ts"]
+Deno.serve({port: 8080}, app.fetch)
