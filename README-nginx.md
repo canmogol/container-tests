@@ -6,6 +6,8 @@ Use Nginx as backend.
 docker run --rm -d -p 9090:80 --cpus=1 --memory=1024m --name nginx nginx
 ```
 
+![Stats](docs/2core2gb.png)
+
 ## BUN
 
 ~110% CPU, ~50MB, 36563 requests
