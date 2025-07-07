@@ -42,5 +42,7 @@ docker stats bun-hello-world
 Load Test:
 ```sh
 ab -c 100 -n 10000 http://localhost:8080/
+# WITH NGINX
+wrk -t10 -c500 -d30s --latency http://localhost:8080/external
 ```
 
