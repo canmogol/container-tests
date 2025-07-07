@@ -12,6 +12,9 @@ import (
 func main() {
     app := fiber.New()
     url := os.Getenv("EXTERNAL_URL")
+    if url == "" {
+        url = "http://172.17.0.1:9090"
+    }
     cc := client.New()
     cc.SetTimeout(3 * time.Second)
 
@@ -30,5 +33,4 @@ func main() {
 
     fmt.Println("Server started at 8080")
     app.Listen(":8080")
-
 }
