@@ -6,7 +6,7 @@
 Run:
 ```sh
 mvn clean install
-java -jar target/code-with-quarkus-1.0.0-SNAPSHOT.jar
+java -jar target/quarkus-app/quarkus-run.jar
 ```
 
 Open:
