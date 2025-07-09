@@ -23,7 +23,7 @@ docker build -t quarkus-hello .
 
 Run:
 ```sh
-docker run --rm -it -p 8080:8080 --cpus=0.2 --memory=16m --name quarkus-hello docker.io/library/quarkus-hello:0.0.1
+docker run --rm -it -p 8080:8080 --cpus=0.2 --memory=16m --name quarkus-hello quarkus-hello
 ```
 
 Test:
