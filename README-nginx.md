@@ -6,6 +6,9 @@ Use Nginx as backend.
 docker run --rm -d -p 9090:80 --cpus=1 --memory=1024m --name nginx nginx
 ```
 
+Please see the [wrk-test.md](wrk-test.md) for different CPU and Memory loads.
+
+
 ![Stats](docs/2core2gb.png)
 
 ## BUN
