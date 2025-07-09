@@ -150,6 +150,8 @@ nrt	Tokyo, Japan	✓
 # Install Git
 apt install -y git-all
 
+# Install wrk
+apt install -y wrk
 
 # Clean up docker
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
@@ -172,4 +174,6 @@ sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 sudo docker run hello-world
+
+
 ```
