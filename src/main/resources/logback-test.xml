@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    TODO create logger for audit only.
+    http://stackoverflow.com/questions/2488558/logback-to-log-different-messages-to-two-files
+    <turboFilter class="ch.qos.logback.classic.turbo.MarkerFilter">
+        <Marker>PROFILER</Marker>
+        <OnMatch>NEUTRAL</OnMatch>
+    </turboFilter>
+
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5marker %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="error">
+        <appender-ref ref="stdout" />
+    </root>
+
+</configuration>

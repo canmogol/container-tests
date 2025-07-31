@@ -1,0 +1,4 @@
+enableHttps: false
+enableHttp: true
+httpPort: 8080
+ip: 0.0.0.0
