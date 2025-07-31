@@ -26,7 +26,7 @@ public class ExampleHandlerProvider implements HandlerProvider {
                     public void handleRequest(HttpServerExchange exchange) throws Exception {
                         String externalUrl = System.getenv("EXTERNAL_URL");
                         if (isNull(externalUrl)) {
-                            externalUrl = "http://192.168.106.1:9090";
+                            externalUrl = "http://172.17.0.1:9090";
                         }
                         HttpRequest getRequest = HttpRequest.newBuilder().uri(URI.create(externalUrl)).GET().build();
                         try {
