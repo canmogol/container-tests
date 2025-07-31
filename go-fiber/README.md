@@ -16,12 +16,12 @@ open http://0.0.0.0:8080/
 
 Build:
 ```sh
-docker build -t go-hello .
+docker build -t go-fiber .
 ```
 
 Run:
 ```sh
-docker run --rm -it -p 8080:8080 --cpus=0.2 --memory=16m --name go-hello docker.io/library/go-hello
+docker run --rm -it -p 8080:8080 --cpus=0.2 --memory=16m --name go-fiber docker.io/library/go-fiber
 ```
 
 Test:
@@ -31,7 +31,7 @@ curl -v --max-time 2  http://localhost:8080/
 
 Observe:
 ```sh
-docker stats go-hello
+docker stats go-fiber
 ```
 
 Load Test:
