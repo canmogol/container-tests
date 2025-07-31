@@ -3,11 +3,11 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.networknt</groupId>
-    <artifactId>routing</artifactId>
+    <groupId>com.example</groupId>
+    <artifactId>light4j</artifactId>
     <packaging>jar</packaging>
     <version>0.1.1-SNAPSHOT</version>
-    <name>routing</name>
+    <name>light4j</name>
 
     <properties>
         <java.version>21</java.version>
