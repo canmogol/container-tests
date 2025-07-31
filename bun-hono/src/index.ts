@@ -14,7 +14,7 @@ app.get('/', (c:Context) => {
 
 
 export default {
-  port: 3000,
+  port: 8080,
   fetch: app.fetch,
 }
 
