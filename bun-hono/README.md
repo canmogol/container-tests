@@ -14,7 +14,7 @@ bun run dev
 
 Open:
 ```sh
-open http://localhost:3000
+open http://localhost:8080
 ```
 
 ## Dockerize
@@ -26,7 +26,7 @@ docker build --pull -t bun-hello-world .
 
 Run:
 ```sh
-docker run --rm -it -p 8080:3000 --cpus=0.2 --memory=16m --name bun-hello-world docker.io/library/bun-hello-world
+docker run --rm -it -p 8080:8080 --cpus=0.2 --memory=16m --name bun-hello-world docker.io/library/bun-hello-world
 ```
 
 Test:
