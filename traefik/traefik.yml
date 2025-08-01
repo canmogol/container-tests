@@ -1,0 +1,21 @@
+log:
+  level: DEBUG  # DEBUG, INFO, WARNING, ERROR, CRITICAL
+  format: common
+  filePath: /var/log/traefik.log
+
+accesslog:
+  format: common
+  filePath: /var/log/access.log
+
+api:
+  insecure: true
+
+entryPoints:
+  web:
+    address: ":80"
+  traefik:
+    address: ":8080"
+
+providers:
+  file:
+    filename: /etc/traefik/dynamic.yaml

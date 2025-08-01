@@ -1,0 +1,12 @@
+http:
+  routers:
+    catch-all:
+      rule: "PathPrefix(`/`)"
+      service: external
+      entryPoints:
+        - web
+  services:
+    external:
+      loadBalancer:
+        servers:
+        - url: "http://159.223.8.251:9090"

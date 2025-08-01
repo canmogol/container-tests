@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  reverse-proxy:
+    image: traefik:v3.5.0
+    container_name: traefik
+    command:
+      - "--configFile=/etc/traefik/traefik.yml"
+    ports:
+      - "8080:80"
+      - "8090:8080"
+    volumes:
+      - /root/container-tests/traefik/traefik.yaml:/etc/traefik/traefik.yaml
+      - /root/container-tests/traefik/dynamic.yaml:/etc/traefik/dynamic.yaml
+      - /root/container-tests/traefik/log/:/var/log/traefik/
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 256M
+        reservations:
+          cpus: '1'
+          memory: 256M
