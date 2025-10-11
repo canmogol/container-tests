@@ -1,6 +1,6 @@
-import com.sun.net.httpserver.HttpExchange;
-import com.sun.net.httpserver.HttpHandler;
-import com.sun.net.httpserver.HttpServer;
+import io.fusionauth.http.server.HTTPListenerConfiguration;
+import io.fusionauth.http.server.HTTPServer;
+import io.fusionauth.http.server.HTTPHandler;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -23,37 +23,39 @@ public class FastHttpApplication {
     }
 
     private void start() throws IOException {
-        final InetSocketAddress serverAddress = new InetSocketAddress("0.0.0.0", 8080);
-        final HttpServer localhost = HttpServer.create(serverAddress, 100);
-        localhost.setExecutor(Executors.newVirtualThreadPerTaskExecutor());
-        localhost.createContext("/", exchange -> handleRequest(exchange, "Hello world!"));
-        localhost.createContext("/external", exchange -> {
+        HTTPHandler handler = (req, res) -> {
             String externalUrl = System.getenv("EXTERNAL_URL");
             if (isNull(externalUrl)) {
                 externalUrl = "http://172.17.0.1:9090";
             }
-            HttpRequest getRequest = HttpRequest.newBuilder().uri(URI.create(externalUrl)).GET().build();
-            try {
-                final HttpResponse<String> request = httpClient.send(getRequest, HttpResponse.BodyHandlers.ofString());
-                handleRequest(exchange, request.body());
-            } catch (InterruptedException e) {
-                log("Error; %s".formatted(e.getMessage()));
-                throw new RuntimeException(e);
+            String responseMessage = "Not Found";
+            int statusCode = 404;
+            if ("/external".equals(req.getPath()) && "GET".equals(req.getMethod().name())) {
+                HttpRequest getRequest = HttpRequest.newBuilder().uri(URI.create(externalUrl)).GET().build();
+                try {
+                    final HttpResponse<String> request = httpClient.send(getRequest, HttpResponse.BodyHandlers.ofString());
+                    responseMessage = request.body();
+                    statusCode = 200;
+                } catch (InterruptedException e) {
+                    log("Error; %s".formatted(e.getMessage()));
+                    responseMessage = "Internal Server Error";
+                    statusCode = 500;
+                }
+            } else if ("/".equals(req.getPath())) {
+                responseMessage = "Hello from Fast HTTP Server!";
+                statusCode = 200;
             }
-        });
-        localhost.start();
-        log("Server started.");
-    }
-
-    private void handleRequest(final HttpExchange exchange, final String responseMessage) {
-        try {
-            exchange.sendResponseHeaders(200, responseMessage.length());
-            exchange.getResponseBody().write(responseMessage.getBytes(StandardCharsets.UTF_8));
-            exchange.getResponseBody().close();
-        } catch (Exception e) {
-            log("Error; %s".formatted(e.getMessage()));
-            throw new RuntimeException(e);
-        }
+            byte[] bytes = responseMessage.getBytes(StandardCharsets.UTF_8);
+            res.setStatus(statusCode);
+            res.setHeader("Content-Type", "text/plain; charset=UTF-8");
+            res.setContentLength(bytes.length);
+            res.getOutputStream().write(bytes);
+        };
+        int port = 8080;
+        HTTPServer server = new HTTPServer().withHandler(handler)
+                .withListener(new HTTPListenerConfiguration(port));
+        server.start();
+        log("Server started on port %d".formatted(port));
     }
 
     private static void log(String message) {

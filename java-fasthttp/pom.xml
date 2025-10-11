@@ -17,6 +17,11 @@
         <!-- dependency versions -->
     </properties>
     <dependencies>
+        <dependency>
+            <groupId>io.fusionauth</groupId>
+            <artifactId>java-http</artifactId>
+            <version>1.2.0</version>
+        </dependency>
         <!-- Test -->
 
     </dependencies>
