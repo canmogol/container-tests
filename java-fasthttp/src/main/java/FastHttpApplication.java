@@ -33,8 +33,8 @@ public class FastHttpApplication {
             if ("/external".equals(req.getPath()) && "GET".equals(req.getMethod().name())) {
                 HttpRequest getRequest = HttpRequest.newBuilder().uri(URI.create(externalUrl)).GET().build();
                 try {
-                    final HttpResponse<String> request = httpClient.send(getRequest, HttpResponse.BodyHandlers.ofString());
-                    responseMessage = request.body();
+                    final HttpResponse<String> response = httpClient.send(getRequest, HttpResponse.BodyHandlers.ofString());
+                    responseMessage = response.body();
                     statusCode = 200;
                 } catch (InterruptedException e) {
                     log("Error; %s".formatted(e.getMessage()));
