@@ -1,4 +1,4 @@
-FROM ghcr.io/graalvm/jdk-community:25 AS builder
+FROM ghcr.io/graalvm/native-image-community:25 AS builder
 WORKDIR /
 COPY . /
 
