@@ -6,7 +6,7 @@ RUN ["/bin/bash", "-c", "cd / \
 && chmod +x ./mvnw \
 && ./mvnw clean install \
 && native-image --version \
-&& native-image --enable-preview --no-fallback -H:+ReportExceptionStackTraces -jar target/RawVirtualThreadApplication.jar \
+&& native-image --enable-preview --no-fallback -H:+ReportExceptionStackTraces -jar target/HipshotServer.jar \
 "]
 
 FROM ubuntu:22.10
