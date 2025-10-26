@@ -767,16 +767,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "69cdb34c158ceb288df11e18b4bd39de994f6657d83847bdffdbd7f346754b0f"
 
 [[package]]
-name = "realworld-axum-api"
-version = "0.1.0"
-dependencies = [
- "axum",
- "reqwest",
- "serde_json",
- "tokio",
-]
-
-[[package]]
 name = "redox_syscall"
 version = "0.5.18"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -837,6 +827,16 @@ dependencies = [
  "libc",
  "untrusted",
  "windows-sys 0.52.0",
+]
+
+[[package]]
+name = "rust-axum"
+version = "0.1.0"
+dependencies = [
+ "axum",
+ "reqwest",
+ "serde_json",
+ "tokio",
 ]
 
 [[package]]
