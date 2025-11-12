@@ -148,7 +148,7 @@ nrt	Tokyo, Japan	✓
 
 ```shell
 # Install utils
-apt install -y unzip zip build-essential
+apt install -y unzip zip build-essential net-tools
 
 # Install Git
 apt install -y git-all
