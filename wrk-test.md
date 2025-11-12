@@ -147,6 +147,9 @@ nrt	Tokyo, Japan	✓
 # Install Git & Docker
 
 ```shell
+# Install utils
+apt install -y unzip zip build-essential
+
 # Install Git
 apt install -y git-all
 
