@@ -147,14 +147,17 @@ nrt	Tokyo, Japan	✓
 # Install Git & Docker
 
 ```shell
+# Update apt
+sudo apt-get update
+
 # Install utils
-apt install -y unzip zip build-essential net-tools
+sudo apt install -y unzip zip build-essential net-tools
 
 # Install Git
-apt install -y git-all
+sudo apt install -y git-all
 
 # Install wrk
-apt install -y wrk
+sudo apt install -y wrk
 
 # Clean up docker
 for pkg in docker.io docker-doc docker-compose docker-compose-v2 podman-docker containerd runc; do sudo apt-get remove $pkg; done
